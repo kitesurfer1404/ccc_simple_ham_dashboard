@@ -8,5 +8,5 @@ git clone https://github.com/kitesurfer1404/ccc_simple_ham_dashboard.git
 ```
 
 * Disable all powersaving settings, screensaver etc.
-* Add autorun.sh to the starup programms
+* Add autorun.sh to the startup programs
 * Reboot
