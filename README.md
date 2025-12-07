@@ -1,13 +1,12 @@
-Nothing to see.
+Nothing to see. Simplistic Dashboard for Congress.
 
-## Setup
+# Setup
 
+```console
 apt install unclutter
+git clone https://github.com/kitesurfer1404/ccc_simple_ham_dashboard.git
+```
 
-Disable all powersaving settings, screensaver etc.
-
-git clone this repo
-
-Add autorun.sh to the starup programms
-
-reboot
+* Disable all powersaving settings, screensaver etc.
+* Add autorun.sh to the starup programms
+* Reboot
