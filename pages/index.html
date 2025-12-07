@@ -17,8 +17,9 @@
         font-family: Arial, Helvetica, sans-serif;
         font-size: 16px;
         margin: 0;
+        background:#181821;
       }
-      .dummy-main-container {
+      .mastodon-main-container {
         position:absolute;
         background:#181821;
         top:0;
@@ -27,21 +28,21 @@
         display: inline-block;
         height: 100%;
       }
-      .dummy-wrapper-timeline {
+      .mastodon-wrapper-timeline {
         width: 100%;
         height: calc(100% - 4rem);
       }
       
-      .spothole-container {
+      .iframe-container {
         position:absolute;
         top:0;
         left:0;
         width:80%;
-        display: inline-block;
-        height: 100%;
+        display:inline-block;
+        height:100%;
       }
-      
-      .spothole-container iframe {
+
+      .iframe-container iframe {
         width:100%;
         height:100%;
         border:none;
@@ -51,11 +52,11 @@
   </head>
 
   <body>
-    <div class="spothole-container">
+    <div class="iframe-container">
 		 <iframe id="deriframe" src="" scrolling="no"></iframe> 
     </div>
-    <div class="dummy-main-container">
-      <div class="dummy-wrapper-timeline">
+    <div class="mastodon-main-container">
+      <div class="mastodon-wrapper-timeline">
         <!-- Mastodon Timeline -->
         <div id="mt-container" class="mt-container">
           <div class="mt-body" role="feed">
@@ -68,7 +69,7 @@
     <!-- JavaScript -->
     <script src="mastodon-timeline.umd.js"></script>
     <script>
-      const myTimeline = new MastodonTimeline.Init({
+      var myTimeline = new MastodonTimeline.Init({
         instanceUrl: "https://social.darc.de",
         timelineType: "profile",
         userId: "115547226196713628",
@@ -76,7 +77,7 @@
       });
       
       
-      const pages = [
+      var pages = [
 //      		"https://hf.dxview.org/perspective/JO43xn",
 //      		"https://www.swpc.noaa.gov/products/real-time-solar-wind",
 //      		"https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg",
@@ -92,9 +93,9 @@
 		"ionosphere.html",
 		"geosphere.html"
 		];
-      let currentPageIndex = 0;
+      var currentPageIndex = 0;
       
-      const iframe = document.getElementById("deriframe");
+      var iframe = document.getElementById("deriframe");
       
       function changeIframeSource() {
         iframe.src = pages[currentPageIndex];
@@ -104,8 +105,8 @@
       // Initialer Aufruf
       changeIframeSource();
 
-      // Alle 30 Sekunden wechseln
-      setInterval(changeIframeSource, 42000);   
+      // Alle 42 Sekunden wechseln
+      setInterval(changeIframeSource, 42000);
 
     </script>
   </body>
