@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Simple Dashboard</title>
+    <link rel="stylesheet" href="mastodon-timeline.min.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+        cursor:none;
+      }
+      html {
+        height: 100%;
+      }
+      body {
+        height: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        margin: 0;
+      }
+      .dummy-main-container {
+        position:absolute;
+        background:#181821;
+        top:0;
+        right:0;
+        width:20%;
+        display: inline-block;
+        height: 100%;
+      }
+      .dummy-wrapper-timeline {
+        width: 100%;
+        height: calc(100% - 4rem);
+      }
+      
+      .spothole-container {
+        position:absolute;
+        top:0;
+        left:0;
+        width:80%;
+        display: inline-block;
+        height: 100%;
+      }
+      
+      .spothole-container iframe {
+        width:100%;
+        height:100%;
+        border:none;
+        overflow:hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="spothole-container">
+		 <iframe id="deriframe" src="" scrolling="no"></iframe> 
+    </div>
+    <div class="dummy-main-container">
+      <div class="dummy-wrapper-timeline">
+        <!-- Mastodon Timeline -->
+        <div id="mt-container" class="mt-container">
+          <div class="mt-body" role="feed">
+            <div class="mt-loading-spinner"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="mastodon-timeline.umd.js"></script>
+    <script>
+      const myTimeline = new MastodonTimeline.Init({
+        instanceUrl: "https://social.darc.de",
+        timelineType: "profile",
+        userId: "115547226196713628",
+        profileName: "@tota",
+      });
+      
+      
+      const pages = [
+//      		"https://hf.dxview.org/perspective/JO43xn",
+//      		"https://www.swpc.noaa.gov/products/real-time-solar-wind",
+//      		"https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg",
+		"https://39c3.totawatch.de/viz/graph?hideNav=true",
+		"https://spothole.app/?embedded=true&dark-mode=true&sig=TOTA", 
+		"https://solar.w5mmw.net/",
+		"https://prop.kc2g.com/",
+		"https://wspr.live/gui/d-solo/BpzJBzRVk/live-world-view?orgId=1&var-band=14&var-mindist=200&var-rotate=Yes&var-intensity=30&var-txloc=%25&var-rxloc=%25&refresh=5m&timezone=utc&panelId=panel-2&__feature.dashboardSceneSolo=true",
+		"aurora.html",
+		"attenuation.html",
+		"cme.html",
+		"flux.html",
+		"ionosphere.html",
+		"geosphere.html"
+		];
+      let currentPageIndex = 0;
+      
+      const iframe = document.getElementById("deriframe");
+      
+      function changeIframeSource() {
+        iframe.src = pages[currentPageIndex];
+        currentPageIndex = (currentPageIndex + 1) % pages.length; // zyklisch durchlaufen
+      }
+
+      // Initialer Aufruf
+      changeIframeSource();
+
+      // Alle 30 Sekunden wechseln
+      setInterval(changeIframeSource, 42000);   
+
+    </script>
+  </body>
+</html>
