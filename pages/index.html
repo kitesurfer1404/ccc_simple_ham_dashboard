@@ -101,12 +101,19 @@
         iframe.src = pages[currentPageIndex];
         currentPageIndex = (currentPageIndex + 1) % pages.length; // zyklisch durchlaufen
       }
+      
+      function updateTimeline() {
+        myTimeline.mtUpdate();
+      }
 
       // Initialer Aufruf
       changeIframeSource();
 
       // Alle 42 Sekunden wechseln
       setInterval(changeIframeSource, 42000);
+      
+      // Timeline alle 30 Sekunden aktualisieren
+      setInterval(updateTimeline, 30000);
 
     </script>
   </body>
